@@ -1,0 +1,19 @@
+{
+  "name": "cjk_rn",
+  "version": "1.0.0",
+  "description": "cjk_rn",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle-android": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output CJK_RN/app/src/main/assets/index.android.bundle --sourcemap-output CJK_RN/app/src/main/assets/index.android.map --assets-dest CJK_RN/app/src/main/res/"
+  },
+  "author": "xqf",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-native": "^0.37.0",
+    "react-native-tab-navigator": "^0.3.3",
+    "react-native-vector-icons": "^3.0.0",
+    "react-native-viewpager": "^0.2.13"
+  }
+}
