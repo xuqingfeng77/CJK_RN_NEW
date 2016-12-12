@@ -80,8 +80,10 @@ var HomeFragmentReact =React.createClass({
 
         this.props.navigator.push({
                component:NewsDetail,
-            title:rowData.title,
-            params:(rowData)
+            // title:rowData.title,
+            // params:{rowData:rowData}
+            params:{title:"过去了没",
+                rowData:rowData}
         })
     },
 

@@ -12,12 +12,13 @@ export default class SimpleNavigationBar extends Component{
         title: PropTypes.string.isRequired,
         backOnPress: PropTypes.func.isRequired
     };
-
+    // 'image!company_logo'
+    // image="../image/lib_titlebar_back_normal.png"
     render(){
         return(
             <View style={styles.toolbar}>
                 {Platform.OS === 'android' ?
-                    <ImageButton  icon="ios-arrow-back" color="#fff" imgSize={px2dp(25)} btnStyle={styles.imgBtn} onPress={this.props.backOnPress}/>
+                    <ImageButton  image='image!company_logo' color="#fff" imgSize={px2dp(25)} btnStyle={styles.imgBtn} onPress={this.props.backOnPress}/>
                     :
                     <ImageButton icon="ios-arrow-back" color="#fff" imgSize={px2dp(25)} btnStyle={styles.imgBtn} onPress={this.props.backOnPress}/>
                 }

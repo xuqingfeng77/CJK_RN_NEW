@@ -74,7 +74,7 @@ export default class SignInPage extends Component {
                  <View   style={{alignItems:'center'}}>
                      <Image
                          style={styles.imageViewLogo}
-                        source={require('../image/company_logo.png')}
+                        source={require('image!company_logo')}
                      />
                 </View>
                 <View style={styles.editGroup}>

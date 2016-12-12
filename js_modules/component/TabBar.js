@@ -4,7 +4,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {Text, StyleSheet, Image} from 'react-native';
+import {Text, StyleSheet, Image,Navigator} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import TabNavigator from 'react-native-tab-navigator';
 import HomeFragment from '../page/HomeFragment';
@@ -45,7 +45,16 @@ export default class TabBar extends Component{
                     selectedTitleStyle={{color: this.props.selectedColor, fontSize: px2dp(10)}}
                     renderIcon={() => <Image style={styles.tab} source={require('../image/tabs/home_normal.png')} />}
                     renderSelectedIcon={() => <Image style={styles.tab} source={require('../image/tabs/home_focus.png')} />}
-                    onPress={() => this.setState({ selectedTab: 'home' })}>{<HomeFragmentES5 navigator={this.props.navigator}/>}
+                    onPress={() => this.setState({ selectedTab: 'home' })}>{
+                    <Navigator
+                        initialRoute={{ name: 'HomeFragmentES5', component: HomeFragmentES5 }}
+                        configureScene={(route) => {
+                            return Navigator.SceneConfigs.HorizontalSwipeJump;
+                        }}
+                        renderScene={(route, navigator) => {
+                            let Component = route.component;
+                            return <Component {...route.params} navigator={navigator} />
+                        }}/>}
 
                 </TabNavigator.Item>
                 <TabNavigator.Item

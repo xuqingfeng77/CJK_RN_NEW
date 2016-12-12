@@ -2,7 +2,8 @@
  * Created by xqf on 2016/12/9.
  */
 import React,{Component}from 'react';
-import {StyleSheet,Text,View,WebView}from 'react-native';
+import {StyleSheet,Text,View,WebView,ToastAndroid,BackAndroid}from 'react-native';
+var count=2;
 var NewsDetail=React.createClass({
 
     getDefaultProps(){
@@ -12,25 +13,28 @@ var NewsDetail=React.createClass({
     },
     getInitialState(){
       return{
-          detailData:''
+          detailData:'https://www.baidu.com/'
       }
     },
     render(){
         return(
+
             <WebView
-                automaticallyAdjustContentInsets={true}
                 style={styles.webView}
-                source={{html: this.state.detailData, baseUrl: ''}}
-                javaScriptEnabled={true}
-                domStorageEnabled={true}
+                url={this.state.detailData}
                 startInLoadingState={true}
-                scalesPageToFit={this.state.scalesPageToFit} />
+                domStorageEnabled={true}
+                javaScriptEnabled={true} />
 
         );
 
     },
     componentDidMount(){
-        console.dir(this.props.rowData);
+        //这里测试listview item传过来的数据
+        ToastAndroid.show('this.props.rowData docid='+this.props.rowData.docid +"\nthis.props.rowData imgsrc"+this.props.rowData.imgsrc,ToastAndroid.SHORT)
+        // console.dir(this.props.title);
+        console.log("我是title"+this.props.title);
+        console.log("我是rowData"+this.props.rowData);
         // var url_api = 'http://c.3g.163.com/nc/article  /' + this.props.rowData.docid + '/full.html';
         //
         // fetch(url_api)
@@ -67,7 +71,15 @@ var NewsDetail=React.createClass({
         //     .catch((error) => {
         //         alert('请求数据失败');
         //     })
-
+        BackAndroid.addEventListener('hardwareBackPress',function(){
+            if(count>=1){
+                ToastAndroid.show('收到点击返回键信息...'+count,ToastAndroid.SHORT);
+                count--;
+                return true;
+            }else{
+                return false;
+            }
+        });
 
     }
 
